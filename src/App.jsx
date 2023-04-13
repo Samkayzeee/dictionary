@@ -8,7 +8,7 @@ function App() {
   const [error, setError] = useState(null);
 
 useEffect(() => {
-  const getMeaning = async () => {
+  const GetMeaning = async () => {
     setLoading(true);
     try {
       if (input === '') {
@@ -31,11 +31,12 @@ useEffect(() => {
       if (error) {
         setLoading(false);
       }
+      console.log(error.message);
       
     }
     setLoading(false);
   }
-  getMeaning();
+  GetMeaning();
 
 },[input])
 
@@ -45,8 +46,6 @@ const search = (e) => {
   let input = e.target.search.value;
   setInput(input);
 }
-
-
   return (
     <div className="App">
 
@@ -54,13 +53,63 @@ const search = (e) => {
       <div className="section1">
         <form action="" onSubmit={search}>
           <input type="search" name="search" id="search" />
-          <button>done</button>
+          <button>Search</button>
         </form>
       </div>
 
 
     <div className="result">
+        {
+          data.map((result, index) => {
+            return(
+              <div key={index}>
+                <h1>WORD: {result.word}</h1>
 
+                <button onClick={async() => {
+                  let audio = result.phonetics
+
+                  if (audio.length >= 1) {
+                    let found = audio.find((item) => item.audio != '');
+                    if (!found) {
+                      console.log('Not Found');
+                    }
+                    else{
+                      let okay = await axios.get(found.audio, {
+                        responseType: 'blob'
+                      });
+    
+                      const play = new window.Audio(URL.createObjectURL(okay.data));
+                      play.play();
+                    }
+                  }
+                  else{
+                    console.log('Audio Not found');
+                    return
+                  }
+                }}>play</button>
+                {
+                  result.meanings.map((meanings, index) => {
+                    return(
+                      <div key={index}>
+                          {meanings.definitions.map((definition, index) => {
+                              return(
+                                <div key={index}>
+                                    <h1>{definition.definition}</h1>
+                                    {
+                                      definition.example?<p>Example:{definition.example}</p>:null
+                                    }
+                                </div>
+                                
+                              );
+                          })}
+                      </div>
+                    )
+                  })
+                }
+              </div>
+            )
+          })
+        }
     </div>
 
     </div>
