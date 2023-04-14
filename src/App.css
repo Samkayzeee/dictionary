@@ -1,9 +1,21 @@
 @import url('https://fonts.googleapis.com/css2?family=Inter&family=Kanit&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Ubuntu:wght@400;500&display=swap');
 
 
 *{
-    font-family: 'Inter', sans-serif;
+    font-family: 'Ubuntu', sans-serif;
     padding: 0;
     margin: 0;
     box-sizing: border-box;
+}
+.section1{
+    background: darkblue;
+    padding: 3% 4%;
+}
+.section1 .logo h1{
+    color: white;
+    font-weight: 900;
+    font-size: 35px;
+    text-align: center;
+    border: solid;
 }

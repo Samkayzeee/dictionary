@@ -1,0 +1,26 @@
+.search-section{
+    background: lightgray;
+}
+.search-section form{
+    text-align: center;
+    padding: 2% 0;
+}
+.search-section form input{
+    padding: 1% 2% 1% 2%;
+    border: solid 1px;
+}
+.search-section form input:focus{
+    outline: none;
+}
+.search-section form button{
+    padding: 1.1%;
+    background: darkblue;
+    color: white;
+    border: none;
+    margin-left: 3px;
+    border-radius: 3px;
+    cursor: pointer;
+}
+.result{
+    padding: 2% 3%;
+}
