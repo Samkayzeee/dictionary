@@ -61,11 +61,13 @@ const Results = () => {
         {
           data.map((result, index) => {
             return(
-              <div key={index}>
-                <h1>WORD: {result.word}</h1>
-
-                <button onClick={async() => {
-                  let audio = result.phonetics
+              <div className="main-results" key={index}>
+                {
+                    
+                }
+                {/* sound button */}
+                      <button className="sound-button" onClick={async() => {
+                  let audio = result.phonetics;
 
                   if (audio.length >= 1) {
                     let found = audio.find((item) => item.audio != '');
@@ -86,18 +88,26 @@ const Results = () => {
                     return
                   }
                 }}><i className="fa-solid fa-volume-high"></i></button>
+                {/* sound button */}
+                <h1 className="word">{result.word}  {result.phonetic} </h1>
+
+          
                 {
                   result.meanings.map((meanings, index) => {
                     return(
-                      <div key={index}>
+                      <div className="definitions" key={index}>
+                        <h4 className="partofspeech">{meanings.partOfSpeech}</h4>
+
                           {meanings.definitions.map((definition, index) => {
                               return(
-                                <div key={index}>
-                                    <h1>{definition.definition}</h1>
+                                <ul key={index}>
+                                    <li>
+                                        <h1>{definition.definition}</h1>
+                                    </li>
                                     {
-                                      definition.example?<p>Example:{definition.example}</p>:null
+                                      definition.example?<p className="example">Example: <span>{definition.example}</span></p>:null
                                     }
-                                </div>
+                                </ul>
                                 
                               );
                           })}
