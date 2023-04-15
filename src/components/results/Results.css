@@ -16,7 +16,7 @@
 }
 .search-section form input{
     padding: 1% 2% 1% 2%;
-    border: solid 1px;
+    border: solid 1px gray;
 }
 .search-section form input:focus{
     outline: none;
@@ -25,10 +25,19 @@
     padding: 1.1%;
     background: darkblue;
     color: white;
+    font-weight: 600;
     border: none;
     margin-left: 3px;
     border-radius: 3px;
     cursor: pointer;
+    transition: all 0.3s ease-in-out;
+}
+.search-section form button:hover{
+    background-color: white;
+    color: darkblue;
+}
+.search-section form button:active{
+    transform: translateY(-5px);
 }
 .result{
     padding: 2% 3%;
@@ -40,7 +49,7 @@
     margin-top: 2%;
 }
 .result .main-results .sound-button{
-    padding: 1.4%;
+    padding: 8px 10px;
     border-radius: 50%;
     margin-right: 3px;
     border: solid 1px;
@@ -54,7 +63,11 @@
 .result .main-results .sound-button:hover{
     background-color: white;
     color: darkblue;
-
+}
+.result .main-results .sound-button[disabled]{
+    background: white;
+    color: darkblue;
+    cursor: not-allowed;
 }
 .result .main-results .word{
     display: inline-block;
@@ -63,7 +76,7 @@
     color: rgb(49, 49, 49);
 }
 .result .main-results .definitions ul{
-    margin-left: 1%;
+    margin-left: 20px;
 }
 .result .main-results .definitions .partofspeech{
     margin-top: 20px;
@@ -84,4 +97,32 @@
 }
 .result .main-results .definitions ul .example span{
     font-weight: 500;
+}
+
+@media screen and (max-width:750px) {
+    .search-section form{
+        padding: 7% 0;
+    }
+    .search-section form input{
+        padding: 8px;
+        padding-left: 13px;
+    }
+    .search-section form button{
+        padding: 8px;
+    }
+    .result .main-results .word{
+        font-size: 25px;
+    }
+    .result .main-results .sound-button{
+        padding: 8px;
+    }
+}
+
+@media screen and (max-width: 300px) {
+    .result .main-results .word{
+        font-size: 19px;
+    }
+    .result .main-results .definitions ul li h1{
+        font-size: 15px;
+    }
 }

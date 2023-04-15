@@ -19,6 +19,7 @@ const Results = () => {
               const data = response.data;
               console.log(data);
               setData(data);
+              setError(null)
             }
             else{
               const response = await axios.get(`https://api.dictionaryapi.dev/api/v2/entries/en/${input}`);
@@ -28,6 +29,7 @@ const Results = () => {
               const data = response.data;
               console.log(data);
               setData(data);
+              setError(null);
             }
             // setting Error
           } catch (error) {
@@ -42,7 +44,7 @@ const Results = () => {
           setLoading(false);
         }
         GetMeaning();
-      
+      // setAudio(true);
       },[input])
 
       const search = (e) => {
@@ -57,7 +59,7 @@ const Results = () => {
           return(
             <>
             {
-              error? <h1 className="error"> {error} Can't Find Result for what you Requested For. </h1> : 
+              error ? <h1 className="error"> {error} Can't Find Result for what you Requested For. </h1> : 
 
               // Displaying Search Results
               <>
@@ -66,17 +68,16 @@ const Results = () => {
           data.map((result, index) => {
             return(
               <div className="main-results" key={index}>
-                {
-                    
-                }
                 {/* sound button */}
+
+                
                       <button className="sound-button" onClick={async() => {
                   let audio = result.phonetics;
 
                   if (audio.length >= 1) {
                     let found = audio.find((item) => item.audio != '');
                     if (!found) {
-                      console.log('Not Found');
+                      return;
                     }
                     else{
                       let okay = await axios.get(found.audio, {
@@ -88,10 +89,10 @@ const Results = () => {
                     }
                   }
                   else{
-                    console.log('Audio Not found');
-                    return
+                    return;
                   }
                 }}><i className="fa-solid fa-volume-high"></i></button>
+                
                 {/* sound button */}
                 <h1 className="word">{result.word}  {result.phonetic} </h1>
 
