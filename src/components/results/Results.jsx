@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import './Results.css';
 import axios from 'axios';
+import Loading from './../loading/Loading';
 
 const Results = () => {
     const [data, setData] = useState([]);
@@ -28,6 +29,7 @@ const Results = () => {
               console.log(data);
               setData(data);
             }
+            // setting Error
           } catch (error) {
             setError(error.message);
             if (error) {
@@ -36,6 +38,7 @@ const Results = () => {
             console.log(error.message);
             
           }
+          // setting Error
           setLoading(false);
         }
         GetMeaning();
@@ -47,16 +50,17 @@ const Results = () => {
         let input = e.target.search.value;
         setInput(input);
       }
-      
-    return ( 
-        <>
+    
 
-    <div className="search-section">
-        <form action="" onSubmit={search}>
-          <input type="search" name="search" id="search" placeholder='Search...'/>
-          <button>Search</button>
-        </form>
-      </div>
+        // Showing Search Results
+      const ShowResults = () => {
+          return(
+            <>
+            {
+              error? <h1 className="error"> {error} Can't Find Result for what you Requested For. </h1> : 
+
+              // Displaying Search Results
+              <>
             <div className="result">
         {
           data.map((result, index) => {
@@ -120,7 +124,29 @@ const Results = () => {
           })
         }
     </div>
+              </>
+              // Displaying Search Results
+            }
+            </>
+          )
+      }
 
+       // Showing Search Results
+      
+    return ( 
+        <>
+         {/* Search in Dictionary */}
+         <div className="search-section">
+                  <form action="" onSubmit={search}>
+                    <input type="search" name="search" id="search" placeholder='Search...'/>
+                    <button>Search</button>
+                  </form>
+                  </div>
+          {/* Search in Dictionary */}
+
+          {
+            loading ? <Loading /> : <ShowResults />
+          }
         </>
      );
 }
