@@ -17,7 +17,6 @@ const Results = () => {
             if (input === '') {
               const response = await axios.get("https://api.dictionaryapi.dev/api/v2/entries/en/dictionary");
               const data = response.data;
-              console.log(data);
               setData(data);
               setError(null)
             }
@@ -27,7 +26,6 @@ const Results = () => {
                 throw Error('Theirs is an Error Showing your Result.');
               }
               const data = response.data;
-              console.log(data);
               setData(data);
               setError(null);
             }
@@ -47,11 +45,14 @@ const Results = () => {
       // setAudio(true);
       },[input])
 
+
+      // function to remove reload of page from form input
       const search = (e) => {
         e.preventDefault();
         let input = e.target.search.value;
         setInput(input);
       }
+       // function to remove reload of page from form input
     
 
         // Showing Search Results
@@ -136,6 +137,7 @@ const Results = () => {
       
     return ( 
         <>
+        
          {/* Search in Dictionary */}
          <div className="search-section">
                   <form action="" onSubmit={search}>

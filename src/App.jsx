@@ -1,4 +1,5 @@
 import './App.css';
+import Footer from './components/footer/Footer';
 import Results from './components/results/Results';
 
 function App() {
@@ -11,7 +12,7 @@ function App() {
       </div>
 
     <Results />
-
+    <Footer />
     </div>
   )
 }

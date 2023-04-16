@@ -1,0 +1,32 @@
+footer{
+    background: darkblue;
+    padding: 5% 3%;
+    display: flex;
+    justify-content: space-between;
+    margin-top: 3%;
+}
+footer .links ul{
+    list-style-type: none;
+}
+footer .links ul li{
+    display: inline-block;
+    margin: 0 30px 0 0;
+}
+footer .links ul li a{
+    font-size: 25px;
+    border: solid 1px darkblue;
+    padding: 8px 12px;
+    border-radius: 50%;
+    text-decoration: none;
+    background-color: white;
+    color: darkblue;
+    transition: all 0.3s ease-in-out;
+}
+footer .links ul li a:hover{
+    background: darkblue;
+    border: solid 1px white;
+    color: white;
+}
+footer .made h2{
+    color: white;
+}
