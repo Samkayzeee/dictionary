@@ -18,7 +18,7 @@ const Results = () => {
               const response = await axios.get("https://api.dictionaryapi.dev/api/v2/entries/en/dictionary");
               const data = response.data;
               setData(data);
-              setError(null)
+              setError(null);
             }
             else{
               const response = await axios.get(`https://api.dictionaryapi.dev/api/v2/entries/en/${input}`);

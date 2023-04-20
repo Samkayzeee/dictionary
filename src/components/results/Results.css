@@ -4,7 +4,8 @@
     border-radius: 6px;
     margin-top: 2%;
     text-align: center;
-    font-size: 23px
+    font-size: 23px;
+    margin: 8% 0;
 }
 
 .search-section{
@@ -100,6 +101,10 @@
 }
 
 @media screen and (max-width:750px) {
+    .error{
+        margin: 150px 0;
+        padding: 8%;
+    }
     .search-section form{
         padding: 7% 0;
     }
