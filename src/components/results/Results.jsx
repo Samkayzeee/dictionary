@@ -23,7 +23,7 @@ const Results = () => {
             else{
               const response = await axios.get(`https://api.dictionaryapi.dev/api/v2/entries/en/${input}`);
               if (response.status !== 200) {
-                throw Error('Theirs is an Error Showing your Result.');
+                throw Error('Theirs is an Error providing your Result.');
               }
               const data = response.data;
               setData(data);
@@ -60,7 +60,7 @@ const Results = () => {
           return(
             <>
             {
-              error ? <h1 className="error"> {error} Can't Find Result for what you Requested For. </h1> : 
+              error ? <h1 className="error"> {error} Can't provide result for what you requested for. </h1> : 
 
               // Displaying Search Results
               <>
